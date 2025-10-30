@@ -10,7 +10,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://resume-optimzer.vercel.app",  // ✅ your frontend domain
+    "http://localhost:5173",               // ✅ for local dev (optional)
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)

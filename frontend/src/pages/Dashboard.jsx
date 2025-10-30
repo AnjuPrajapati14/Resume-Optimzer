@@ -7,7 +7,8 @@ import AddJobModal from '../components/AddJobModal';
 import ResumeChangesModal from '../components/ResumeChangesModal';
 import BaseResumeModal from '../components/BaseResumeModal';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7500/api';
+const rawBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7500/api';
+const API_BASE_URL = rawBase.replace(/\/+$/, '');
 
 const Dashboard = () => {
   const [jobs, setJobs] = useState([]);
